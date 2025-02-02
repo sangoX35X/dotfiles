@@ -273,6 +273,18 @@ return {
 				trailspace = {
 				},
 			}
+			if vim.g.colemak then
+				lazy_table.ai['mappings'] = {
+					inside = 'A',
+					inside_next = 'An',
+					inside_last = 'Al',
+				}
+				lazy_table.files['mappings'] = {
+					go_in = 'i',
+					go_plus = 'I',
+					mark_set = '',
+				}
+			end
 			load_plugins(lazy_table)
 		end
 		vim.api.nvim_create_autocmd(
