@@ -225,7 +225,8 @@ return {
 				},
 				map = {
 					_key = {
-						{ key = 'm', fun = require 'mini.map'.open, opt = { desc = "Open mini map" } },
+						{ key = 'mm', fun = require 'mini.map'.toggle, opt = { desc = "Toggle mini map" } },
+						{ key = 'mf', fun = require 'mini.map'.toggle_focus, opt = { desc = "Focus mini map" } },
 					},
 					integrations = {
 						require 'mini.map'.gen_integration.diagnostic {
