@@ -58,24 +58,12 @@ return {
 				header = header,
 				footer = footer,
 			},
-			basics = {
-				options = {
-					win_borders = 'double',
-				},
-				mappings = {
-					windows = true,
-					move_with_alt = true,
-				},
-				autocommands = {
-					relnum_in_visual_mode = true,
-				},
-			}
 		}
 		load_plugins(table)
 
-		local lazy_load = function ()
+		local function very_lazy ()
 			---@type table<MiniPluginName, Plugin>
-			local lazy_table = {
+			local table = {
 				ai = {
 					n_lines = 1000,
 					search_method = 'cover'
@@ -87,6 +75,18 @@ return {
 						timing = require 'mini.animate'.gen_timing.linear {
 							duration = 1,
 						},
+					},
+				},
+				basics = {
+					options = {
+						win_borders = 'double',
+					},
+					mappings = {
+						windows = true,
+						move_with_alt = true,
+					},
+					autocommands = {
+						relnum_in_visual_mode = true,
 					},
 				},
 				bracketed = {
@@ -252,8 +252,6 @@ return {
 				},
 				operators = {
 				},
-				pairs = {
-				},
 				pick = {
 					_key = {
 						{ key = 'p', fun = ":Pick ", opt = { desc = "Snip of `:Pick` command" } },
@@ -275,24 +273,39 @@ return {
 				},
 			}
 			if vim.g.colemak then
-				lazy_table.ai['mappings'] = {
+				table.ai['mappings'] = {
 					inside = 'A',
 					inside_next = 'An',
 					inside_last = 'Al',
 				}
-				lazy_table.files['mappings'] = {
+				table.files['mappings'] = {
 					go_in = 'i',
 					go_plus = 'I',
 					mark_set = '',
 				}
 			end
-			load_plugins(lazy_table)
+			load_plugins(table)
 		end
 		vim.api.nvim_create_autocmd(
 			'User',
 			{
 				pattern = 'VeryLazy',
-				callback = lazy_load,
+				callback = very_lazy,
+			}
+		)
+
+		local function insert_enter ()
+			---@type table<MiniPluginName, Plugin>
+			local table = {
+				pairs = {
+				},
+			}
+			load_plugins(table)
+		end
+		vim.api.nvim_create_autocmd(
+			'InsertEnter',
+			{
+				callback = insert_enter,
 			}
 		)
 	end
