@@ -7,10 +7,23 @@ vim.opt.rtp:prepend(lazy_path)
 require("lazy").setup(
 	"plugin",
 	{
+		defaults = {
+			lazy = true,
+		},
+		pkg = {
+			sources = {
+				"lazy",
+			},
+		},
 		performance = {
 			rtp = {
-				disabled_plugins = { }
-			}
-		}
+				disabled_plugins = {
+					"netrwPlugin",
+					"matchit",
+					"matchparen",
+					"tutor",
+				},
+			},
+		},
 	}
 )
