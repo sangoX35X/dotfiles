@@ -40,3 +40,7 @@ vim.opt.smartcase = true
 vim.opt.mousescroll = 'ver:1,hor:1'
 vim.opt.clipboard = "unnamedplus"
 vim.opt.virtualedit = "block"
+
+vim.g.use_xhtml = 1
+vim.g.html_use_css = 1
+vim.g.html_no_pre = 1
