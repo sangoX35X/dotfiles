@@ -11,7 +11,7 @@ return {
 				{
 					ft = 'help',
 					title = function ()
-						return _G.MiniIcons.get('filetype', 'help') .. ' HELP'
+						return MiniIcons.get('filetype', 'help') .. ' HELP'
 					end,
 					size = {
 						width = 78,
@@ -20,7 +20,10 @@ return {
 			},
 			top = {
 			},
+			animate = {
+				enabled = false,
+			},
+			exit_when_last = true,
 		},
-		exit_when_last = true,
 	},
 }
