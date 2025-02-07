@@ -27,6 +27,12 @@ if vim.g.colemak then
 			['k'] = 'n',
 			['K'] = 'N',
 		},
+		x = {
+			['<C-h>'] = { 'gh', desc = 'Move left' },
+			['<C-n>'] = { 'gj', desc = 'Move below' },
+			['<C-e>'] = { 'gk', desc = 'Move above' },
+			['<C-i>'] = { 'gl', desc = 'Move right' },
+		},
 		cit = {
 			['<M-n>'] = { '<down>', desc = 'Back' },
 			['<M-e>'] = { '<up>', desc = 'Foward' },
@@ -45,6 +51,12 @@ else
 		cit = {
 			['<M-n>'] = { '<down>', desc = 'Back' },
 			['<M-e>'] = { '<up>', desc = 'Foward' },
+		},
+		x = {
+			['<C-h>'] = { 'gh', desc = 'Move left' },
+			['<C-j>'] = { 'gj', desc = 'Move below' },
+			['<C-k>'] = { 'gk', desc = 'Move above' },
+			['<C-k>'] = { 'gl', desc = 'Move right' },
 		},
 	}
 end

@@ -287,11 +287,6 @@ return {
 				},
 			}
 			if vim.g.colemak then
-				table.ai['mappings'] = {
-					inside = 'A',
-					inside_next = 'An',
-					inside_last = 'Al',
-				}
 				table.files['mappings'] = {
 					go_in = 'i',
 					go_plus = 'I',
