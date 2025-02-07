@@ -61,6 +61,22 @@ return {
 		}
 		load_plugins(table)
 
+		local function ui_enter ()
+			---@type table<MiniPluginName, Plugin>
+			require 'lazy'.load { plugins = { 'nvim-web-devicons' } }
+			local table = {
+				icons = {
+				},
+			}
+			load_plugins(table)
+		end
+		vim.api.nvim_create_autocmd(
+			'UIEnter',
+			{
+				callback = ui_enter,
+			}
+		)
+
 		local function very_lazy ()
 			---@type table<MiniPluginName, Plugin>
 			local table = {
@@ -193,8 +209,6 @@ return {
 
 						hex_color = require 'mini.hipatterns'.gen_highlighter.hex_color()
 					},
-				},
-				icons = {
 				},
 				indentscope = {
 					_disable = true,
