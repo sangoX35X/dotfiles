@@ -4,4 +4,8 @@ return {
 		opt = {
 		},
 	},
+	{
+		'vim-denops/denops.vim',
+		event = 'VeryLazy',
+	},
 }
