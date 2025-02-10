@@ -81,6 +81,40 @@ return {
 			---@type table<MiniPluginName, Plugin>
 			local table = {
 				ai = {
+					custom_textobjects = {
+						F = require 'mini.ai'.gen_spec.treesitter {
+							a = '@function.outer',
+							i = '@function.inner',
+						},
+						C = require 'mini.ai'.gen_spec.treesitter {
+							a = '@class.outer',
+							i = '@class.inner',
+						},
+						B = require 'mini.ai'.gen_spec.treesitter {
+							a = {
+								'@conditional.outer',
+								'@loop.outer',
+							},
+							i = {
+								'@conditional.inner',
+								'@loop.inner',
+							},
+						},
+						T = require 'mini.ai'.gen_spec.treesitter {
+							a = {
+								'@function.outer',
+								'@class.outer',
+								'@conditional.outer',
+								'@loop.outer',
+							},
+							i = {
+								'@function.inner',
+								'@class.inner',
+								'@conditional.inner',
+								'@loop.inner',
+							}
+						},
+					},
 					n_lines = 1000,
 					search_method = 'cover',
 				},
@@ -273,6 +307,7 @@ return {
 				},
 				splitjoin = {
 					mappings = {
+						toggle = keymap_prefix .. 'st',
 						split = keymap_prefix .. 'ss',
 						join = keymap_prefix .. 'sj',
 					},
