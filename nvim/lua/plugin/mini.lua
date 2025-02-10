@@ -82,7 +82,7 @@ return {
 			local table = {
 				ai = {
 					n_lines = 1000,
-					search_method = 'cover'
+					search_method = 'cover',
 				},
 				align = {
 				},
@@ -207,7 +207,7 @@ return {
 						todo = { pattern = '%f[%w]()TODO()%f[%w]', group = 'MiniHipatternsTodo' },
 						note = { pattern = '%f[%w]()NOTE()%f[%w]', group = 'MiniHipatternsNote' },
 
-						hex_color = require 'mini.hipatterns'.gen_highlighter.hex_color()
+						hex_color = require 'mini.hipatterns'.gen_highlighter.hex_color(),
 					},
 				},
 				indentscope = {
