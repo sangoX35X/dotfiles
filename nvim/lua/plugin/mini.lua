@@ -212,7 +212,7 @@ return {
 				},
 				indentscope = {
 					_disable = true,
-					deaw = {
+					draw = {
 						delay = 0,
 						animation = require 'mini.indentscope'.gen_animation.none(),
 					},
