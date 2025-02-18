@@ -58,28 +58,15 @@ return {
 				header = header,
 				footer = footer,
 			},
+			icons = {
+			},
 		}
+		require 'lazy'.load { plugins = { 'nvim-web-devicons' } }
 		load_plugins(table)
-
-		local function ui_enter ()
-			---@type table<MiniPluginName, Plugin>
-			require 'lazy'.load { plugins = { 'nvim-web-devicons' } }
-			local table = {
-				icons = {
-				},
-			}
-			load_plugins(table)
-		end
-		vim.api.nvim_create_autocmd(
-			'UIEnter',
-			{
-				callback = ui_enter,
-			}
-		)
 
 		local function very_lazy ()
 			---@type table<MiniPluginName, Plugin>
-			local table = {
+			local keymap = {
 				ai = {
 					custom_textobjects = {
 						F = require 'mini.ai'.gen_spec.treesitter {
@@ -123,7 +110,7 @@ return {
 				animate = {
 					scroll = {
 						timing = require 'mini.animate'.gen_timing.linear {
-							duration = 1,
+							duration = 0.5,
 						},
 					},
 				},
@@ -164,6 +151,9 @@ return {
 						{ mode = 'x', keys = '[' },
 						{ mode = 'n', keys = ']' },
 						{ mode = 'x', keys = ']' },
+						{ mode = 'x', keys = 'a' },
+						{ mode = 'x', keys = 'i' },
+						{ mode = 'n', keys = '\\' },
 						-- Built-in
 						{ mode = 'i', keys = '<C-x>' },
 						-- G
@@ -198,8 +188,8 @@ return {
 				},
 				diff = {
 					_key = {
-						{ key = 'dt', fun = require 'mini.diff'.toggle, opt = { desc = "Toggle diff" } },
-						{ key = 'dd', fun = require 'mini.diff'.toggle_overlay, opt = { desc = "Toggle diff overlay" } },
+						{ key = 'dd', fun = require 'mini.diff'.toggle, opt = { desc = "Toggle diff" } },
+						{ key = 'do', fun = require 'mini.diff'.toggle_overlay, opt = { desc = "Toggle diff overlay" } },
 					},
 					view = {
 						style = 'sign',
@@ -311,6 +301,9 @@ return {
 						split = keymap_prefix .. 'ss',
 						join = keymap_prefix .. 'sj',
 					},
+					detect = {
+						separator = '[,;]',
+					},
 				},
 				statusline = {
 				},
@@ -322,13 +315,21 @@ return {
 				},
 			}
 			if vim.g.colemak then
-				table.files['mappings'] = {
+				keymap.files['mappings'] = {
 					go_in = 'i',
 					go_plus = 'I',
 					mark_set = '',
 				}
+				keymap.move['mappings'] = {
+					right = '<M-i>',
+					down = '<M-n>',
+					up = '<M-e>',
+					line_right = '<M-i>',
+					line_down = '<M-n>',
+					line_up = '<M-e>',
+				}
 			end
-			load_plugins(table)
+			load_plugins(keymap)
 		end
 		vim.api.nvim_create_autocmd(
 			'User',
