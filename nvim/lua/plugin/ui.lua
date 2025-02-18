@@ -30,4 +30,13 @@ return {
 		'j-hui/fidget.nvim',
 		config = true,
 	},
+	{
+		'OXY2DEV/markview.nvim',
+		lazy = false,
+		opts = {
+			preview = {
+				icon_provider = 'mini',
+			},
+		},
+	},
 }
