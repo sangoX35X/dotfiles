@@ -295,6 +295,8 @@ return {
 						{ key = 'p', fun = ":Pick ", opt = { desc = "Snip of `:Pick` command" } },
 					},
 				},
+				snippets = {
+				},
 				splitjoin = {
 					mappings = {
 						toggle = keymap_prefix .. 'st',
