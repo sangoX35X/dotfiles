@@ -19,11 +19,15 @@ if vim.g.colemak then
 		},
 		nx = {
 			['n'] = 'j',
-			['e'] = 'k',
-			['i'] = 'l',
-			['m'] = 'i',
-			['l'] = 'e',
 			['N'] = 'J',
+			['e'] = 'k',
+			['E'] = 'K',
+			['i'] = 'l',
+			['I'] = 'L',
+			['m'] = 'i',
+			['M'] = 'I',
+			['l'] = 'e',
+			['L'] = 'E',
 			['k'] = 'n',
 			['K'] = 'N',
 		},
@@ -56,7 +60,7 @@ else
 			['<C-h>'] = { 'gh', desc = 'Move left' },
 			['<C-j>'] = { 'gj', desc = 'Move below' },
 			['<C-k>'] = { 'gk', desc = 'Move above' },
-			['<C-k>'] = { 'gl', desc = 'Move right' },
+			['<C-l>'] = { 'gl', desc = 'Move right' },
 		},
 	}
 end
