@@ -26,4 +26,8 @@ return {
 			exit_when_last = true,
 		},
 	},
+	{
+		'j-hui/fidget.nvim',
+		config = true,
+	},
 }

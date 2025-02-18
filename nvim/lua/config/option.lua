@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 
 vim.opt.autochdir = true
+vim.opt.updatetime = 100
 
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencodings = "utf-8,sjis,default,utf-16"

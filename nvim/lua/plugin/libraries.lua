@@ -12,4 +12,7 @@ return {
 			vim.fn['denops#server#start']()
 		end,
 	},
+	{
+		'nvim-neotest/nvim-nio',
+	},
 }
