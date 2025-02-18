@@ -5,7 +5,7 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 
 -- colemak
 if vim.g.colemak then
-	utils.keymap_set_from_table {
+	utils.set_keymap_from_table {
 		n = {
 			-- basics(windows)
 			['<C-h>'] = { '<C-w>h', desc = 'Focus on left window' },
@@ -47,7 +47,7 @@ if vim.g.colemak then
 		},
 	}
 else
-	utils.keymap_set_from_table {
+	utils.set_keymap_from_table {
 		cit = {
 			['<M-n>'] = { '<down>', desc = 'Back' },
 			['<M-e>'] = { '<up>', desc = 'Foward' },
