@@ -3,6 +3,103 @@ local utils = require 'utils'
 vim.keymap.set('!', '<C-l>', '<Esc>')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 
+utils.set_keymap_from_table {
+	is = {
+		['<tab>'] = {
+			function ()
+				if MiniSnippets.session.get() then
+					MiniSnippets.session.jump 'next'
+				else
+					return '<tab>'
+				end
+			end,
+			desc = 'Jump to next snippet field',
+			expr = true,
+		},
+		['<S-tab>'] = {
+			function ()
+				if MiniSnippets.session.get() then
+					MiniSnippets.session.jump 'prev'
+				else
+					return '<S-tab>'
+				end
+			end,
+			desc = 'Jump to prev snippet field',
+			expr = true,
+		}
+	},
+	ci = {
+		['<C-y>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.fn['pum#map#confirm']()
+				else
+					return '<C-y>'
+				end
+			end,
+			desc = 'Comfirm the ddc completion',
+		},
+		['<C-e>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.schedule(vim.fn['pum#map#cancel'])
+				else
+					return '<C-e>'
+				end
+			end,
+			desc = 'Cancel the ddc completion',
+			expr = true,
+		},
+		['<C-n>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.fn['pum#map#insert_relative'](1, 'loop')
+				elseif vim.fn['ddc#map#can_complete']() then
+					vim.fn['ddc#map#manual_complete']()
+				else
+					return '<C-n>'
+				end
+			end,
+			desc = 'Next ddc canditate',
+		},
+		['<C-p>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.fn['pum#map#insert_relative'](-1, 'loop')
+				elseif vim.fn['ddc#map#can_complete']() then
+					vim.fn['ddc#map#manual_complete']()
+				else
+					return '<C-n>'
+				end
+			end,
+			desc = 'Previous ddc canditate',
+		},
+		['<C-S-n>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.fn['pum#map#insert_relative_page'](1, 'loop')
+				elseif vim.fn['ddc#map#can_complete']() then
+					vim.fn['ddc#map#manual_complete']()
+				else
+					return '<C-S-n>'
+				end
+			end,
+			desc = 'Next pum page',
+		},
+		['<C-S-p>'] = {
+			function ()
+				if vim.fn['pum#visible']() then
+					vim.fn['pum#insert_relative_page'](-1, 'loop')
+				elseif vim.fn['ddc#map#can_complete']() then
+					vim.fn['ddc#map#manual_complete']()
+				else
+					return '<C-S-p>'
+				end
+			end,
+			desc = 'Previous pum page',
+		},
+	},
+}
 -- colemak
 if vim.g.colemak then
 	utils.set_keymap_from_table {
