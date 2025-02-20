@@ -15,25 +15,28 @@ return {
 			local augend = require 'dial.augend'
 			local config = require 'dial.config'
 			local dmap = require 'dial.map'
-			local utils = require 'utils'
+			local set_keymap = require 'utils.keymap'.set_by_table
 
 			---@param group? string
 			---@return nil
 			local function gen_keymaps (group)
-				utils.set_keymap_from_table {
-					n = {
-						['<C-a>'] = { dmap.inc_normal(group), buffer = true, desc = 'Increment' },
-						['<C-x>'] = { dmap.dec_normal(group), buffer = true, desc = 'Decrement' },
-						['g<C-a>'] = { dmap.inc_gnormal(group), buffer = true, desc = 'Increment' },
-						['g<C-x>'] = { dmap.dec_gnormal(group), buffer = true, desc = 'Decrement' },
-					},
-					x = {
-						['<C-a>'] = { dmap.inc_visual(group), buffer = true, desc = 'Increment' },
-						['<C-x>'] = { dmap.dec_visual(group), buffer = true, desc = 'Decrement' },
-						['g<C-a>'] = { dmap.inc_gvisual(group), buffer = true, desc = 'Increment' },
-						['g<C-x>'] = { dmap.dec_gvisual(group), buffer = true, desc = 'Decrement' },
-					},
-				}
+				set_keymap(
+					nil,
+					{
+						n = {
+							['<C-a>'] = { dmap.inc_normal(group), buffer = true, desc = 'Increment' },
+							['<C-x>'] = { dmap.dec_normal(group), buffer = true, desc = 'Decrement' },
+							['g<C-a>'] = { dmap.inc_gnormal(group), buffer = true, desc = 'Increment' },
+							['g<C-x>'] = { dmap.dec_gnormal(group), buffer = true, desc = 'Decrement' },
+						},
+						x = {
+							['<C-a>'] = { dmap.inc_visual(group), buffer = true, desc = 'Increment' },
+							['<C-x>'] = { dmap.dec_visual(group), buffer = true, desc = 'Decrement' },
+							['g<C-a>'] = { dmap.inc_gvisual(group), buffer = true, desc = 'Increment' },
+							['g<C-x>'] = { dmap.dec_gvisual(group), buffer = true, desc = 'Decrement' },
+						},
+					}
+				)
 			end
 
 			local int = augend.integer

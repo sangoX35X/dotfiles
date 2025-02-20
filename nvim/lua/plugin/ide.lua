@@ -24,75 +24,80 @@ return {
 					end
 				end
 
-				require 'utils'.set_keymap_from_table {
+				require 'utils.keymap'.set_by_table(
 					{
 						prefix = '<leader>l',
 						buffer = true,
 					},
-					n = {
-						['jdc'] = {
-							function () lspbuf.declaration { reuse_win = true } end,
-							desc = 'Jump to the declaration of the symbol'
+					{
+						n = {
+							['jdc'] = {
+								function () lspbuf.declaration { reuse_win = true } end,
+								desc = 'Jump to the declaration of the symbol'
+							},
+							['jdf'] = {
+								function () lspbuf.definition { reuse_win = true } end,
+								desc = 'Jump to the definition of the symbol'
+							},
+							['f'] = {
+								function () lspbuf.format { async = true } end,
+								desc = 'Format the buffer with LS'
+							},
+							['h'] = {
+								function () lspbuf.hover { border = 'rounded' } end,
+								desc = 'Display hover information about the symbol'
+							},
+							['li'] = {
+								function () lspbuf.implementation { reuse_win = true } end,
+								desc = 'List all the implementations for the symbol'
+							},
+							['lcs'] = {
+								function () lspbuf.incoming_calls() end,
+								desc = 'List all the call sites of the symbol'
+							},
+							['lci'] = {
+								function () lspbuf.outgoing_calls() end,
+								desc = 'List all the items called by the symbol'
+							},
+							['lr'] = {
+								function () lspbuf.references() end,
+								desc = 'List all the references to the symbol'
+							},
+							['r'] = {
+								function () lspbuf.rename() end,
+								desc = 'Rename the symbol'
+							},
+							['s'] = {
+								function () lspbuf.signature_help { silent = false, border = 'rounded' } end,
+								desc = 'Display signature information about the symbol'
+							},
+							['jt'] = {
+								function () lspbuf.type_definition() end,
+								desc = 'Jump to the definition of the type of the symbol'
+							},
+							['lsb'] = {
+								function () lspbuf.typehierarchy 'subtypes' end,
+								desc = 'List all the subtypes of the symbol'
+							},
+							['lsp'] = {
+								function () lspbuf.typehierarchy 'supertypes' end,
+								desc = 'List all the supertypes of the symbol'
+							},
 						},
-						['jdf'] = {
-							function () lspbuf.definition { reuse_win = true } end,
-							desc = 'Jump to the definition of the symbol'
+					}
+				)
+				require 'utils.keymap'.set_by_table (
+					nil,
+					{
+						n = {
+							['K'] = {
+								function () lspbuf.hover { border = 'rounded' } end,
+								desc = 'Displays hover information about the symbol',
+								buffer = true,
+							},
 						},
-						['f'] = {
-							function () lspbuf.format { async = true } end,
-							desc = 'Format the buffer with LS'
-						},
-						['h'] = {
-							function () lspbuf.hover { border = 'rounded' } end,
-							desc = 'Display hover information about the symbol'
-						},
-						['li'] = {
-							function () lspbuf.implementation { reuse_win = true } end,
-							desc = 'List all the implementations for the symbol'
-						},
-						['lcs'] = {
-							function () lspbuf.incoming_calls() end,
-							desc = 'List all the call sites of the symbol'
-						},
-						['lci'] = {
-							function () lspbuf.outgoing_calls() end,
-							desc = 'List all the items called by the symbol'
-						},
-						['lr'] = {
-							function () lspbuf.references() end,
-							desc = 'List all the references to the symbol'
-						},
-						['r'] = {
-							function () lspbuf.rename() end,
-							desc = 'Rename the symbol'
-						},
-						['s'] = {
-							function () lspbuf.signature_help { silent = false, border = 'rounded' } end,
-							desc = 'Display signature information about the symbol'
-						},
-						['jt'] = {
-							function () lspbuf.type_definition() end,
-							desc = 'Jump to the definition of the type of the symbol'
-						},
-						['lsb'] = {
-							function () lspbuf.typehierarchy 'subtypes' end,
-							desc = 'List all the subtypes of the symbol'
-						},
-						['lsp'] = {
-							function () lspbuf.typehierarchy 'supertypes' end,
-							desc = 'List all the supertypes of the symbol'
-						},
-					},
-				}
-				require 'utils'.set_keymap_from_table {
-					n = {
-						['K'] = {
-							function () lspbuf.hover { border = 'rounded' } end,
-							desc = 'Displays hover information about the symbol',
-							buffer = true,
-						},
-					},
-				}
+					}
+				)
 				vim.api.nvim_create_autocmd(
 					'ColorScheme',
 					{
