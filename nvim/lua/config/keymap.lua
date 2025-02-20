@@ -28,7 +28,7 @@ utils.set_keymap_from_table {
 			expr = true,
 		}
 	},
-	ci = {
+	i = {
 		['<C-y>'] = {
 			function ()
 				if vim.fn['pum#visible']() then

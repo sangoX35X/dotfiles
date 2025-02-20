@@ -35,11 +35,6 @@ return {
 			'LumaKernel/ddc-file',
 			'Shougo/ddc-source-lsp',
 			'matsui54/ddc-source-buffer',
-			'Shougo/ddc-source-cmdline',
-			'uga-rosa/ddc-source-nvim-lua',
-			'Shougo/ddc-source-line',
-			'Shougo/ddc-source-input',
-			'Shougo/neco-vim',
 			'gamoutatsumi/ddc-emoji',
 			'tani/ddc-path',
 			-- filter
@@ -84,15 +79,6 @@ return {
 					'Event',
 					'Operator',
 					'TypeParameter',
-					-- nvim-lua
-					'nil',
-					'number',
-					'string',
-					'boolean',
-					'table',
-					'function',
-					'thread',
-					'userdata',
 				},
 				default = {
 					'file',
@@ -134,43 +120,8 @@ return {
 					'TextChangedI',
 					'TextChangedP',
 					'InsertEnter',
-					'CmdlineEnter',
-					'CmdlineChanged',
 				},
 				backspaceCompletion = true,
-				cmdlineSources = {
-					[':'] = {
-						'cmdline',
-						'file',
-						'necovim',
-						'nvim-lua',
-					},
-					['@'] = {
-						'around',
-						'file',
-						'input',
-					},
-					['>'] = {
-						'around',
-						'file',
-						'input',
-					},
-					['/'] = {
-						'around',
-						'line',
-					},
-					['?'] = {
-						'around',
-						'line',
-					},
-					['-'] = {
-						'around',
-						'line',
-					},
-					['='] = {
-						'input',
-					},
-				},
 				filterOptions = {
 				},
 				filterParams = {
@@ -220,9 +171,6 @@ return {
 						minKeywordLength = 3,
 						ignoreCase = false,
 					},
-					cmdline = {
-						mark = '',
-					},
 					emoji = {
 						mark = '󰞅',
 						matchers = {
@@ -242,12 +190,6 @@ return {
 							'converter_fuzzy',
 						},
 					},
-					line = {
-						mark = '',
-					},
-					input = {
-						mark = '',
-					},
 					lsp = {
 						dup = 'keep',
 						mark = '',
@@ -257,16 +199,6 @@ return {
 						converters = {
 							'converter_kind_labels',
 							'converter_color',
-							'converter_fuzzy',
-						},
-					},
-					necovim = {
-						mark = MiniIcons.get('extension', 'vim'),
-					},
-					['nvim-lua'] = {
-						mark = MiniIcons.get('extension', 'lua'),
-						converters = {
-							'converter_kind_labels',
 							'converter_fuzzy',
 						},
 					},
@@ -326,16 +258,6 @@ return {
 				}
 			)
 			vim.keymap.set('i', '<C-x>', '<cmd>call ddc#hide()<Cr><C-x>')
-			vim.api.nvim_create_autocmd(
-				{
-					'CmdlineEnter',
-				},
-				{
-					callback = function ()
-						vim.fn['ddc#enable_cmdline_completion']()
-					end,
-				}
-			)
 
 			vim.fn['ddc#enable'] {
 				context_filetype = 'treesitter',
