@@ -29,8 +29,10 @@ return {
 	{
 		'j-hui/fidget.nvim',
 		opts = {
-			view = {
-				group_separator = '∙ - ─ ────',
+			notification = {
+				view = {
+					group_separator = '∙ - ─ ────',
+				},
 			},
 		},
 	},
