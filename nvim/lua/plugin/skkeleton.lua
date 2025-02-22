@@ -46,7 +46,6 @@ return {
 				completionRankFile = cache .. '/rank.json',
 				databasePath = cache .. '/database.json',
 				globalDictionaries = dicts,
-				keepMode = true,
 				registerConvertResult = true,
 				selectCanditateKeys = selectCanditateKeys,
 				sources = {
