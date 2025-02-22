@@ -6,6 +6,16 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 set_keymap (
 	nil,
 	{
+		n = {
+			['gd'] = {
+				function ()
+					vim.diagnostic.open_float {
+						border = 'rounded',
+					}
+				end,
+				desc = 'Show the diagnostics in a float window',
+			},
+		},
 		is = {
 			['<tab>'] = {
 				function ()

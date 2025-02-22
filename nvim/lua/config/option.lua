@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 vim.opt.autochdir = true
 vim.opt.updatetime = 100

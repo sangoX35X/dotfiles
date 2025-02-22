@@ -1,8 +1,5 @@
-return function (server)
-	local lspconfig = require 'lspconfig'
-
-	lspconfig[server].setup {
-		on_attach = function (client, bufnr)
-		end,
-	}
-end
+return {
+	on_attach = function(client, bufnr)
+		require 'utils.lsp.Setupper':new(client, bufnr):set_common()
+	end,
+}

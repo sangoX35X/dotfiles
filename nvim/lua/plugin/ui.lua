@@ -28,7 +28,11 @@ return {
 	},
 	{
 		'j-hui/fidget.nvim',
-		config = true,
+		opts = {
+			view = {
+				group_separator = '∙ - ─ ────',
+			},
+		},
 	},
 	{
 		'OXY2DEV/markview.nvim',
