@@ -12,6 +12,7 @@ return {
 			{ mode = 'x', 'g<C-x>' },
 		},
 		config = function ()
+			local utils = require 'utils'
 			local augend = require 'dial.augend'
 			local config = require 'dial.config'
 			local dmap = require 'dial.map'
@@ -70,7 +71,7 @@ return {
 
 			config.augends:register_group {
 				default = common,
-				lua = utils.marge_list(
+				lua = utils.list.marge(
 					common,
 					{
 						paren.alias.lua_str_literal,
@@ -78,8 +79,7 @@ return {
 						const.new { elements = { '~=', '==' } },
 						common_style_bool,
 					}
-					),
-				rust = utils.marge_list(
+				rust = utils.list.marge(
 					common,
 					{
 						paren.alias.rust_str_literal,
