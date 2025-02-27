@@ -1,5 +1,5 @@
 local M = {}
 
-M.Setupper = require 'utils.ls.Setupper'
+M.Setupper = require 'utils.lsp.Setupper'
 
 return M
