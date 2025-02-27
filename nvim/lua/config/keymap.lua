@@ -43,7 +43,9 @@ set_keymap (
 		i = {
 			['<C-y>'] = {
 				function ()
-					if vim.fn['pum#visible']() then
+					if require 'copilot.suggestion'.is_visible() then
+						require 'copilot.suggestion'.accept()
+					elseif vim.fn['pum#visible']() then
 						vim.fn['pum#map#confirm']()
 					else
 						return '<C-y>'
@@ -53,7 +55,9 @@ set_keymap (
 			},
 			['<C-e>'] = {
 				function ()
-					if vim.fn['pum#visible']() then
+					if require 'copilot.suggestion'.is_visible() then
+						require 'copilot.suggestion'.dismiss()
+					elseif vim.fn['pum#visible']() then
 						vim.schedule(vim.fn['pum#map#cancel'])
 					else
 						return '<C-e>'
@@ -64,7 +68,9 @@ set_keymap (
 			},
 			['<C-n>'] = {
 				function ()
-					if vim.fn['pum#visible']() then
+					if require 'copilot.suggestion'.is_visible() then
+						require 'copilot.suggestion'.next()
+					elseif vim.fn['pum#visible']() then
 						vim.fn['pum#map#insert_relative'](1, 'loop')
 					elseif vim.fn['ddc#map#can_complete']() then
 						vim.fn['ddc#map#manual_complete']()
@@ -76,7 +82,9 @@ set_keymap (
 			},
 			['<C-p>'] = {
 				function ()
-					if vim.fn['pum#visible']() then
+					if require 'copilot.suggestion'.is_visible() then
+						require 'copilot.suggestion'.prev()
+					elseif vim.fn['pum#visible']() then
 						vim.fn['pum#map#insert_relative'](-1, 'loop')
 					elseif vim.fn['ddc#map#can_complete']() then
 						vim.fn['ddc#map#manual_complete']()
