@@ -45,4 +45,21 @@ return {
 			},
 		},
 	},
+	{
+		'matsui54/denops-signature_help',
+		event = 'VeryLazy',
+		opts = {
+			border = 'rounded',
+			contentsStyle = 'labels',
+			onTriggerChar = true,
+		},
+		config = function (_, opts)
+			-- set options
+			vim.g.signature_help_config = opts
+			-- set highlights
+			vim.api.nvim_set_hl(0, 'SignatureHelpBorder', { link = 'FloatBorder' })
+			-- init
+			vim.fn['signature_help#enable']()
+		end,
+	},
 }
