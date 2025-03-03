@@ -1,0 +1,5 @@
+syntax = 'Lua51'
+quote_style = 'AutoPreferSingle'
+call_parentheses = 'Input'
+space_after_function_names = 'Definitions'
+# collapse_simple_statement = 'Always'
