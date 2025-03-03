@@ -211,9 +211,6 @@ return {
 					lsp = {
 						dup = 'keep',
 						mark = '',
-						sorters = {
-							'sorter_lsp-detail-size',
-						},
 						converters = {
 							'converter_kind_labels',
 							'converter_color',
