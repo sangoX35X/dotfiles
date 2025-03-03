@@ -2,6 +2,7 @@ return {
 	{
 		'Shougo/pum.vim',
 		config = function ()
+			vim.api.nvim_set_hl(0, 'PumFloatNormal', { link = 'NormalFloat' })
 			vim.fn['pum#set_option'] {
 				border = 'rounded',
 				direction = 'auto',
