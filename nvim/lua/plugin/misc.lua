@@ -31,4 +31,18 @@ return {
 			},
 		},
 	},
+	{
+		'Bekaboo/dropbar.nvim',
+		event = 'VeryLazy',
+		opts = {},
+		keys = {
+			{
+				'<leader>b',
+				function ()
+					require 'dropbar.api'.pick()
+				end,
+				desc = 'Pick breadcrumbs',
+			},
+		},
+	},
 }
