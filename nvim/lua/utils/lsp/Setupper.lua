@@ -85,7 +85,7 @@ function C:set_auto_document_highlight()
 end
 
 function C:set_common_autocmd()
-	self:set_auto_format()
+	-- self:set_auto_format()
 	self:set_auto_document_highlight()
 end
 
