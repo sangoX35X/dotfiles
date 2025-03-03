@@ -15,15 +15,31 @@ return {
 					-- kind = 1,
 					-- menu = 1,
 				},
-				max_height = 16,
+				max_height = 8,
 				offset_cmdrow = 2,
 				padding = true,
-				preview = true,
-				preview_border = 'single',
+				preview_border = 'rounded',
 				preview_delay = 0,
-				scrollbar_char = '│',
+				scrollbar_char = '',
 				use_setline = true,
 			}
+		end,
+	},
+	{
+		'denops-popup-preview.vim',
+		opts = {
+			border = 'rounded',
+			supportVsnip = false,
+			supportUltisnips = false,
+			delay = 200,
+		},
+		config = function (_, opts)
+			-- set options
+			vim.g.popup_preview_config = opts
+			-- set highlights
+			vim.api.nvim_set_hl(0, 'PopupPreviewBorder', { link = 'FloatBorder' })
+			-- init
+			vim.fn['popup_preview#enable']()
 		end,
 	},
 	{
@@ -44,6 +60,7 @@ return {
 			'haxibami/ddc-filter-converter_color',
 			-- misc
 			'Shougo/pum.vim',
+			'denops-popup-preview.vim',
 		},
 		event = {
 			{
