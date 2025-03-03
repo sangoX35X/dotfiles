@@ -18,7 +18,6 @@ return {
 				'html',
 				'jsonls',
 				'lua_ls',
-				'metals',
 				'tinymist',
 			}
 
@@ -42,5 +41,32 @@ return {
 			end
 		end,
 		event = 'VeryLazy',
+	},
+	{
+		'scalameta/nvim-metals',
+		ft = {
+			'scala',
+			'sbt',
+		},
+		opts = function ()
+			local metals_config = require 'metals'.bare_config()
+
+			metals_config.on_attach = function (client, bufnr)
+				require 'utils.lsp.Setupper':new(client, bufnr):set_common()
+			end
+
+			return metals_config
+		end,
+		config = function (plugin, opts)
+			local augroup = vim.api.nvim_create_augroup('nvim-metals', {})
+
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = plugin.ft,
+				callback = function ()
+					require 'metals'.initialize_or_attach(opts)
+				end,
+				group = augroup,
+			})
+		end,
 	},
 }
