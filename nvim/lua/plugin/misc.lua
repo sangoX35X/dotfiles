@@ -6,7 +6,7 @@ return {
 		},
 	},
 	{
-		"uga-rosa/translate.nvim",
+		'uga-rosa/translate.nvim',
 		keys = {
 			{ mode = { 'n', 'x' }, '<leader>Tsj', '<cmd>Translate ja -output=split<cr>' },
 			{ mode = { 'n', 'x' }, '<leader>Tfj', '<cmd>Translate ja -output=floating<cr>' },
@@ -15,8 +15,7 @@ return {
 			{ mode = { 'n', 'x' }, '<leader>Tyj', '<cmd>Translate ja -output=register<cr>' },
 		},
 		opts = {
-			default = {
-			},
+			default = {},
 			preset = {
 				output = {
 					split = {

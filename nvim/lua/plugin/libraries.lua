@@ -1,8 +1,7 @@
 return {
 	{
 		'nvim-tree/nvim-web-devicons',
-		opts = {
-		},
+		opts = {},
 	},
 	{
 		'vim-denops/denops.vim',

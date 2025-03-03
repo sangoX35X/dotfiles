@@ -49,11 +49,11 @@ return {
 						peek_definition_code = {
 							[keymap_prefix .. 'df'] = {
 								query = '@function.outer',
-								desc = 'Show the definition of function'
+								desc = 'Show the definition of function',
 							},
 							[keymap_prefix .. 'dc'] = {
 								query = '@class.outer',
-								desc = 'Show the definition of class'
+								desc = 'Show the definition of class',
 							},
 						},
 					},
@@ -76,9 +76,27 @@ return {
 				end,
 				desc = 'Toggle arguments',
 			},
-			{ keymap_prefix .. 'st', function () require 'treesj'.toggle() end, desc = 'Toggle split/join' },
-			{ keymap_prefix .. 'ss', function () require 'treesj'.split() end, desc = 'Split' },
-			{ keymap_prefix .. 'sj', function () require 'treesj'.join() end, desc = 'Join' },
+			{
+				keymap_prefix .. 'st',
+				function ()
+					require 'treesj'.toggle()
+				end,
+				desc = 'Toggle split/join',
+			},
+			{
+				keymap_prefix .. 'ss',
+				function ()
+					require 'treesj'.split()
+				end,
+				desc = 'Split',
+			},
+			{
+				keymap_prefix .. 'sj',
+				function ()
+					require 'treesj'.join()
+				end,
+				desc = 'Join',
+			},
 		},
 		cmd = {
 			'TSJToggle',
@@ -89,7 +107,7 @@ return {
 			'nvim-treesitter/nvim-treesitter',
 		},
 		opts = {
-			max_join_length = 10000
+			max_join_length = 10000,
 		},
 	},
 }

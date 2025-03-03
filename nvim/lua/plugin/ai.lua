@@ -33,7 +33,7 @@ return {
 		keys = {
 			{
 				nmap_prefix .. 'a',
-				function()
+				function ()
 					require 'copilot.suggestion'.toggle_auto_trigger()
 				end,
 				desc = 'Toggle auto suggestion',

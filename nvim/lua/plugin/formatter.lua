@@ -5,8 +5,7 @@ return {
 			formatters_by_ft = {
 				lua = { 'stylua' },
 			},
-			format_on_save = {
-			},
+			format_on_save = {},
 			default_format_opts = {
 				lsp_format = 'fallback',
 				stop_after_first = true,
@@ -25,7 +24,7 @@ return {
 					'x',
 				},
 				'<leader>f',
-				function()
+				function ()
 					require 'conform'.format {
 						async = true,
 					}

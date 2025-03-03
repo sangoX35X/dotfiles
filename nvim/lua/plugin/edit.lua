@@ -21,23 +21,20 @@ return {
 			---@param group? string
 			---@return nil
 			local function gen_keymaps (group)
-				set_keymap(
-					nil,
-					{
-						n = {
-							['<C-a>'] = { dmap.inc_normal(group), buffer = true, desc = 'Increment' },
-							['<C-x>'] = { dmap.dec_normal(group), buffer = true, desc = 'Decrement' },
-							['g<C-a>'] = { dmap.inc_gnormal(group), buffer = true, desc = 'Increment' },
-							['g<C-x>'] = { dmap.dec_gnormal(group), buffer = true, desc = 'Decrement' },
-						},
-						x = {
-							['<C-a>'] = { dmap.inc_visual(group), buffer = true, desc = 'Increment' },
-							['<C-x>'] = { dmap.dec_visual(group), buffer = true, desc = 'Decrement' },
-							['g<C-a>'] = { dmap.inc_gvisual(group), buffer = true, desc = 'Increment' },
-							['g<C-x>'] = { dmap.dec_gvisual(group), buffer = true, desc = 'Decrement' },
-						},
-					}
-				)
+				set_keymap(nil, {
+					n = {
+						['<C-a>'] = { dmap.inc_normal(group), buffer = true, desc = 'Increment' },
+						['<C-x>'] = { dmap.dec_normal(group), buffer = true, desc = 'Decrement' },
+						['g<C-a>'] = { dmap.inc_gnormal(group), buffer = true, desc = 'Increment' },
+						['g<C-x>'] = { dmap.dec_gnormal(group), buffer = true, desc = 'Decrement' },
+					},
+					x = {
+						['<C-a>'] = { dmap.inc_visual(group), buffer = true, desc = 'Increment' },
+						['<C-x>'] = { dmap.dec_visual(group), buffer = true, desc = 'Decrement' },
+						['g<C-a>'] = { dmap.inc_gvisual(group), buffer = true, desc = 'Increment' },
+						['g<C-x>'] = { dmap.dec_gvisual(group), buffer = true, desc = 'Decrement' },
+					},
+				})
 			end
 
 			local int = augend.integer
@@ -71,43 +68,35 @@ return {
 
 			config.augends:register_group {
 				default = common,
-				lua = utils.list.marge(
-					common,
-					{
-						paren.alias.lua_str_literal,
-						case.new { types = { 'snake_case', 'camelCase', 'PascalCase' } },
-						const.new { elements = { '~=', '==' } },
-						common_style_bool,
-					}
-				rust = utils.list.marge(
-					common,
-					{
-						paren.alias.rust_str_literal,
-					}
-					),
+				lua = utils.list.marge(common, {
+					paren.alias.lua_str_literal,
+					case.new { types = { 'snake_case', 'camelCase', 'PascalCase' } },
+					const.new { elements = { '~=', '==' } },
+					common_style_bool,
+				}),
+				rust = utils.list.marge(common, {
+					paren.alias.rust_str_literal,
+				}),
 				markdown = {
 					augend.misc.alias.markdown_header,
 				},
 				minifiles = {
 					int.alias.decimal,
 					case.new { types = { 'kebab-case', 'camelCase', 'PascalCase', 'SCREAMING_SNAKE_CASE' } },
-				}
+				},
 			}
 
-			vim.api.nvim_create_autocmd(
-				'FileType',
-				{
-					callback = function ()
-						local group_name = nil
+			vim.api.nvim_create_autocmd('FileType', {
+				callback = function ()
+					local group_name = nil
 
-						if config.augends:get(vim.bo.filetype) then
-							group_name = vim.bo.filetype
-						end
-
-						gen_keymaps(group_name)
+					if config.augends:get(vim.bo.filetype) then
+						group_name = vim.bo.filetype
 					end
-				}
-				)
+
+					gen_keymaps(group_name)
+				end,
+			})
 
 			vim.cmd.set('filetype=' .. vim.bo.filetype)
 		end,

@@ -115,7 +115,7 @@ return {
 				end
 			end
 			local function add_kind_label (label_table)
-				for name, label in pairs (label_table) do
+				for name, label in pairs(label_table) do
 					kind_labels.icons[name] = label[1]
 					kind_labels.highlights[name] = label[2]
 				end
@@ -140,8 +140,7 @@ return {
 					'InsertEnter',
 				},
 				backspaceCompletion = true,
-				filterOptions = {
-				},
+				filterOptions = {},
 				filterParams = {
 					converter_kind_labels = {
 						kindLabels = kind_labels.icons,
@@ -228,7 +227,7 @@ return {
 						converters = {},
 						isVolatile = true,
 						minAutoCompleteLength = 1,
-					}
+					},
 				},
 				sourceParams = {
 					file = {
@@ -239,39 +238,31 @@ return {
 						displaySymDir = 'symlinkDirectory',
 					},
 					lsp = {
-						snippetEngine = vim.fn['denops#callback#register'](
-							function (body)
-								MiniSnippets.default_insert { body = body }
-							end
-						),
-					}
+						snippetEngine = vim.fn['denops#callback#register'](function (body)
+							MiniSnippets.default_insert { body = body }
+						end),
+					},
 				},
 			}
-			vim.api.nvim_create_autocmd(
-				'User',
-				{
-					pattern = 'skkeleton-enable-pre',
-					callback = function ()
-						vim.b.prev_ddc_config = vim.fn['ddc#custom#get_buffer']()
-						vim.fn['ddc#custom#patch_buffer'] {
-							sources = {
-								'skkeleton',
-							},
-							postFilters = {},
-						}
-					end
-				}
-			)
-			vim.api.nvim_create_autocmd(
-				'User',
-				{
-					pattern = 'skkeleton-disable-pre',
-					callback = function ()
-						vim.fn['ddc#custom#set_buffer'](vim.b.prev_ddc_config)
-						vim.b.prev_ddc_config = nil
-					end
-				}
-			)
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'skkeleton-enable-pre',
+				callback = function ()
+					vim.b.prev_ddc_config = vim.fn['ddc#custom#get_buffer']()
+					vim.fn['ddc#custom#patch_buffer'] {
+						sources = {
+							'skkeleton',
+						},
+						postFilters = {},
+					}
+				end,
+			})
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'skkeleton-disable-pre',
+				callback = function ()
+					vim.fn['ddc#custom#set_buffer'](vim.b.prev_ddc_config)
+					vim.b.prev_ddc_config = nil
+				end,
+			})
 			vim.keymap.set('i', '<C-x>', '<cmd>call ddc#hide()<Cr><C-x>')
 
 			vim.fn['ddc#enable'] {

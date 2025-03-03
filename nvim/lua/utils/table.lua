@@ -5,8 +5,8 @@ local stdtable = table
 ---@param table table<any, any>
 ---@param ... any
 ---@return any the value
-function M.get_nested(table, ...)
-	local keys = {...}
+function M.get_nested (table, ...)
+	local keys = { ... }
 
 	if #keys == 0 then
 		return table

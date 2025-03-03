@@ -7,7 +7,7 @@ return {
 		},
 	},
 	keys = {
-		{ mode = {'!', 't'}, '<C-j>', '<Plug>(skkeleton-toggle)' },
+		{ mode = { '!', 't' }, '<C-j>', '<Plug>(skkeleton-toggle)' },
 	},
 	config = function ()
 		local function callback ()
@@ -54,12 +54,9 @@ return {
 				},
 			}
 		end
-		vim.api.nvim_create_autocmd(
-			'User',
-			{
-				pattern = 'skkeleton-initialize-pre',
-				callback = callback,
-			}
-		)
+		vim.api.nvim_create_autocmd('User', {
+			pattern = 'skkeleton-initialize-pre',
+			callback = callback,
+		})
 	end,
 }

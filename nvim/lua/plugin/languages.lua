@@ -1,4 +1,5 @@
 return {
+	-- typst
 	{
 		{
 			'kaarmu/typst.vim',
@@ -15,7 +16,7 @@ return {
 				'TypstPreviewSyncCursor',
 				'TypstPreviewToggle',
 				'TypstPreviewUpdate',
-			}
+			},
 		},
 	},
 }

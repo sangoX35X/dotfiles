@@ -3,10 +3,8 @@ return {
 		'folke/edgy.nvim',
 		event = 'VeryLazy',
 		opts = {
-			left = {
-			},
-			bottom = {
-			},
+			left = {},
+			bottom = {},
 			right = {
 				{
 					ft = 'help',
@@ -18,8 +16,7 @@ return {
 					},
 				},
 			},
-			top = {
-			},
+			top = {},
 			animate = {
 				enabled = false,
 			},
@@ -31,7 +28,7 @@ return {
 		opts = {
 			notification = {
 				view = {
-					group_separator = '∙ - ─ ────',
+					group_separator = '- ─ ────',
 				},
 			},
 		},

@@ -1,15 +1,11 @@
-
-vim.api.nvim_create_autocmd(
-	{
-		'BufEnter',
-		'BufWinEnter',
+vim.api.nvim_create_autocmd({
+	'BufEnter',
+	'BufWinEnter',
+}, {
+	pattern = {
+		'*.typ',
 	},
-	{
-		pattern = {
-			'*.typ',
-		},
-		callback = function ()
-			vim.opt_local.filetype = 'typst'
-		end,
-	}
-)
+	callback = function ()
+		vim.opt_local.filetype = 'typst'
+	end,
+})

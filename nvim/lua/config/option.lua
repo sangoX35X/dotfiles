@@ -5,7 +5,7 @@ vim.opt.autochdir = true
 vim.opt.updatetime = 100
 
 vim.opt.encoding = 'utf-8'
-vim.opt.fileencodings = "utf-8,sjis,default,utf-16"
+vim.opt.fileencodings = 'utf-8,sjis,default,utf-16'
 
 vim.opt.autoindent = true
 vim.opt.expandtab = false
@@ -14,22 +14,22 @@ vim.opt.smartindent = true
 vim.opt.softtabstop = -1
 vim.opt.tabstop = 4
 
-vim.opt.ambiwidth = "single"
+vim.opt.ambiwidth = 'single'
 vim.opt.cmdheight = 1
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
-vim.opt.helplang = "ja,en"
+vim.opt.helplang = 'ja,en'
 vim.opt.list = true
 vim.opt.listchars = {
-	eol = "↵",
-	tab = "  ",
-	space = "･",
-	trail = "␣",
-	extends = "➙",
+	eol = '↵',
+	tab = '  ',
+	space = '･',
+	trail = '␣',
+	extends = '➙',
 }
 vim.opt.number = true
 vim.opt.pumblend = 15
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors = true
 vim.opt.winblend = 15
 vim.opt.wrap = false
@@ -39,9 +39,9 @@ vim.opt.showmatch = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = true
 
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.mousescroll = 'ver:1,hor:1'
-vim.opt.virtualedit = "block"
+vim.opt.virtualedit = 'block'
 
 vim.g.html_no_pre = 1
 vim.g.html_use_css = 1
