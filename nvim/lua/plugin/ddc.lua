@@ -21,7 +21,6 @@ return {
 				preview_border = 'rounded',
 				preview_delay = 0,
 				scrollbar_char = '',
-				use_setline = true,
 			}
 		end,
 	},
@@ -189,6 +188,7 @@ return {
 						ignoreCase = false,
 					},
 					emoji = {
+						dup = 'keep',
 						mark = '󰞅',
 						matchers = {
 							'emoji',
@@ -200,7 +200,7 @@ return {
 					},
 					file = {
 						mark = '󰈔',
-						isVolatile = ture,
+						isVolatile = true,
 						keywordPattern = '[\\w.-]*',
 						converters = {
 							'converter_kind_labels',
