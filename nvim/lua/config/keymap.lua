@@ -1,5 +1,7 @@
 local set_keymap = require 'utils.keymap'.set_by_table
 
+local copilot_suggestion = require 'copilot.suggestion'
+
 vim.keymap.set('!', '<C-l>', '<Esc>')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 
@@ -14,60 +16,45 @@ set_keymap(nil, {
 			desc = 'Show the diagnostics in a float window',
 		},
 	},
-	is = {
-		['<tab>'] = {
-			function ()
-				if MiniSnippets.session.get() then
-					MiniSnippets.session.jump 'next'
-				else
-					return '<tab>'
-				end
-			end,
-			desc = 'Jump to next snippet field',
-			expr = true,
-		},
-		['<S-tab>'] = {
-			function ()
-				if MiniSnippets.session.get() then
-					MiniSnippets.session.jump 'prev'
-				else
-					vim.cmd 'normal! <C-y>'
-				end
-			end,
-			desc = 'Jump to prev snippet field',
-			expr = true,
-		},
-	},
 	i = {
 		['<C-y>'] = {
 			function ()
-				if require 'copilot.suggestion'.is_visible() then
-					require 'copilot.suggestion'.accept()
-				elseif vim.fn['pum#visible']() then
-					vim.fn['pum#map#confirm']()
-				else
-					return '<C-y>'
+				if copilot_suggestion.is_visible() then
+					copilot_suggestion.accept()
+					return
 				end
+
+				if vim.fn['pum#visible']() then
+					vim.schedule(vim.fn['pum#map#confirm'])
+					return
+				end
+
+				return '<C-y>'
 			end,
-			desc = 'Comfirm the ddc completion',
+			desc = 'Accept the completion or suggestion',
+			expr = true,
 		},
 		['<C-e>'] = {
 			function ()
-				if require 'copilot.suggestion'.is_visible() then
-					require 'copilot.suggestion'.dismiss()
-				elseif vim.fn['pum#visible']() then
-					vim.schedule(vim.fn['pum#map#cancel'])
-				else
-					return '<C-e>'
+				if copilot_suggestion.is_visible() then
+					copilot_suggestion.dismiss()
+					return
 				end
+
+				if vim.fn['pum#visible']() then
+					vim.schedule(vim.fn['pum#map#cancel'])
+					return
+				end
+
+				return '<C-e>'
 			end,
-			desc = 'Cancel the ddc completion',
+			desc = 'Dismiss the completion or suggestion',
 			expr = true,
 		},
 		['<C-n>'] = {
 			function ()
-				if require 'copilot.suggestion'.is_visible() then
-					require 'copilot.suggestion'.next()
+				if copilot_suggestion.is_visible() then
+					copilot_suggestion.next()
 				elseif vim.fn['pum#visible']() then
 					vim.fn['pum#map#insert_relative'](1, 'loop')
 				elseif vim.fn['ddc#map#can_complete']() then
@@ -76,12 +63,12 @@ set_keymap(nil, {
 					return '<C-n>'
 				end
 			end,
-			desc = 'Next ddc canditate',
+			desc = 'Next canditate',
 		},
 		['<C-p>'] = {
 			function ()
-				if require 'copilot.suggestion'.is_visible() then
-					require 'copilot.suggestion'.prev()
+				if copilot_suggestion.is_visible() then
+					copilot_suggestion.prev()
 				elseif vim.fn['pum#visible']() then
 					vim.fn['pum#map#insert_relative'](-1, 'loop')
 				elseif vim.fn['ddc#map#can_complete']() then
@@ -90,7 +77,7 @@ set_keymap(nil, {
 					return '<C-n>'
 				end
 			end,
-			desc = 'Previous ddc canditate',
+			desc = 'Previous canditate',
 		},
 		['<C-S-n>'] = {
 			function ()
