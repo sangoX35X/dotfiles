@@ -15,14 +15,11 @@ return {
 			'BufWritePre',
 		},
 		cmd = {
-			'ComformInfo',
+			'ConformInfo',
 		},
 		keys = {
 			{
-				mode = {
-					'n',
-					'x',
-				},
+				mode = { 'n', 'x' },
 				'<leader>f',
 				function ()
 					require 'conform'.format {
