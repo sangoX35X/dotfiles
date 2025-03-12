@@ -9,7 +9,7 @@ return {
 			local lspconfig = require 'lspconfig'
 			local utils = require 'utils'
 			---@string string[]
-			local laungage_server_names = {
+			local language_server_names = {
 				'clangd',
 				'cssls',
 				'elixirls',
@@ -23,7 +23,7 @@ return {
 				'typos_lsp',
 			}
 
-			for _, server_name in ipairs(laungage_server_names) do
+			for _, server_name in ipairs(language_server_names) do
 				-- <server_name>.lua が存在しない場合は default.lua を使用する
 				---@type boolean, table
 				local ok, server_config = pcall(require, 'lsp.' .. server_name)
