@@ -20,6 +20,7 @@ return {
 				'lua_ls',
 				'rust_analyzer',
 				'tinymist',
+				'typos_lsp',
 			}
 
 			for _, server_name in ipairs(laungage_server_names) do
