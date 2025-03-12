@@ -524,6 +524,7 @@ return {
 						'surround',
 						'tabline',
 						'trailspace',
+						'notify',
 					})
 				end,
 			})
