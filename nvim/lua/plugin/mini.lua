@@ -369,6 +369,32 @@ return {
 				end
 				return opts
 			end,
+			notify = function (_)
+				local opts = {
+					lsp_progress = {
+						enable = false,
+					},
+					window = {
+						config = {
+							border = 'rounded',
+						},
+					},
+					_after = function (this)
+						vim.notify_original = vim.notify
+						---@param msg string
+						---@param level? number
+						---@param opts? table
+						vim.notify = function (msg, level, opts)
+							if msg:match(('[^\n]*\n'):rep(3)) then
+								return vim.notify_original(msg, level, opts)
+							else
+								return this.make_notify()(msg, level, opts)
+							end
+						end
+					end,
+				}
+				return opts
+			end,
 			operators = {},
 			pairs = {},
 			pick = {
