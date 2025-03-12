@@ -20,7 +20,7 @@ end
 
 function C:set_auto_format ()
 	if self.client.server_capabilities.workspaceSymbolProvider then
-		local augroup = vim.api.nvim_create_augroup('AutoFormat' .. self.bufnr, {})
+		local augroup = vim.api.nvim_create_augroup('LspAutoFormat' .. self.bufnr, {})
 		vim.api.nvim_create_autocmd('BufWritePre', {
 			group = augroup,
 			buffer = self.bufnr,
