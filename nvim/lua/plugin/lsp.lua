@@ -5,38 +5,65 @@ return {
 		dependencies = {
 			'j-hui/fidget.nvim',
 		},
-		config = function ()
+		opts = function (_)
+			local Setupper = require 'utils.lsp.Setupper'
+			local opts = {
+				clangd = true,
+				cssls = true,
+				elixirls = true,
+				eslint = true,
+				haxe_language_server = true,
+				html = true,
+				jsonls = true,
+				lua_ls = true,
+				rust_analyzer = true,
+				tinymist = true,
+				typos_lsp = {},
+			}
+			return opts
+		end,
+		config = function (_, opts)
 			local lspconfig = require 'lspconfig'
 			local utils = require 'utils'
-			---@string string[]
-			local language_server_names = {
-				'clangd',
-				'cssls',
-				'elixirls',
-				'eslint',
-				'haxe_language_server',
-				'html',
-				'jsonls',
-				'lua_ls',
-				'rust_analyzer',
-				'tinymist',
-				'typos_lsp',
-			}
 
-			for _, server_name in ipairs(language_server_names) do
-				-- <server_name>.lua が存在しない場合は default.lua を使用する
-				---@type boolean, table
-				local ok, server_config = pcall(require, 'lsp.' .. server_name)
-				if not ok then
-					server_config = require 'lsp.default'
+			local function get_server_config_rec (server_name)
+				local server_config_or_name = opts[server_name]
+
+				local default_config = {
+					on_attach = function (client, bufnr)
+						utils.lsp.Setupper:new(client, bufnr):set_common()
+					end,
+				}
+
+				if type(server_config_or_name) == 'table' then
+					return server_config_or_name
 				end
 
-				-- コマンドが実行可能な場合にのみ設定を行う
+				if server_config_or_name == true then
+					return default_config
+				end
+
+				if type(server_config_or_name) == 'string' then
+					return get_server_config_rec(server_config_or_name)
+				end
+
+				local error_message = ('Unexpected value was found in %s(LS): %s'):format(
+					server_name,
+					server_config_or_name
+				)
+				vim.notify(error_message)
+
+				return default_config
+			end
+
+			for server_name, _ in pairs(opts) do
 				local server = lspconfig[server_name]
-				local lsp_cmd = utils.table.get_nested(server_config, 'cmd', 1)
+				local server_config = get_server_config_rec(server_name)
+				local cmd = utils.table.get_nested(server_config, 'cmd', 1)
 					or utils.table.get_nested(server, 'config_def', 'default_config', 'cmd', 1)
 
-				if lsp_cmd and vim.fn.executable(lsp_cmd) == 1 then
+				-- コマンドが実行可能な場合にのみ設定を行う
+				if cmd and vim.fn.executable(cmd) == 1 then
 					server.setup(server_config)
 				end
 			end
