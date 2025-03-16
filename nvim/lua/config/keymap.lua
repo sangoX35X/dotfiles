@@ -63,7 +63,7 @@ set_keymap(nil, {
 					return '<C-n>'
 				end
 			end,
-			desc = 'Next canditate',
+			desc = 'Next candidate',
 		},
 		['<C-p>'] = {
 			function ()
@@ -77,7 +77,7 @@ set_keymap(nil, {
 					return '<C-n>'
 				end
 			end,
-			desc = 'Previous canditate',
+			desc = 'Previous candidate',
 		},
 		['<C-S-n>'] = {
 			function ()
@@ -141,7 +141,7 @@ if vim.g.colemak then
 		},
 		cit = {
 			['<M-n>'] = { '<down>', desc = 'Back' },
-			['<M-e>'] = { '<up>', desc = 'Foward' },
+			['<M-e>'] = { '<up>', desc = 'Forward' },
 			-- basics(move_with_alt)
 			['<M-h>'] = { '<left>', desc = 'Left' },
 			['<M-i>'] = { '<right>', desc = 'Right' },
@@ -156,7 +156,7 @@ else
 	set_keymap(nil, {
 		cit = {
 			['<M-n>'] = { '<down>', desc = 'Back' },
-			['<M-e>'] = { '<up>', desc = 'Foward' },
+			['<M-e>'] = { '<up>', desc = 'Forward' },
 		},
 		x = {
 			['<C-h>'] = { 'gh', desc = 'Move left' },
