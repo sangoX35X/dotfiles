@@ -12,10 +12,10 @@ vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
 vim.opt.smartindent = true
 vim.opt.softtabstop = -1
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 
 vim.opt.ambiwidth = 'single'
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.helplang = 'ja,en'
