@@ -73,6 +73,24 @@ end
 
 function C:set_common_keymap ()
 	set_keymap({
+		buffer = self.bufnr,
+	}, {
+		nx = {
+			gd = {
+				function ()
+					vim.lsp.buf.definition { reuse_win = true }
+				end,
+				desc = 'Jump to the definition of the symbol',
+			},
+			gD = {
+				function ()
+					vim.lsp.buf.declaration { reuse_win = true }
+				end,
+				desc = 'Jump to the declaration of the symbol',
+			},
+		},
+	})
+	set_keymap({
 		prefix = '<localleader>',
 		buffer = self.bufnr,
 	}, {

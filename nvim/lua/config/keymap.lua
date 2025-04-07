@@ -6,8 +6,8 @@ vim.keymap.set('!', '<C-l>', '<Esc>')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 
 set_keymap(nil, {
-	n = {
-		['gd'] = {
+	nx = {
+		['<C-i>'] = {
 			function ()
 				vim.diagnostic.open_float {
 					border = 'rounded',
