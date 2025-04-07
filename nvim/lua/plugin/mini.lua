@@ -216,7 +216,7 @@ return {
 			diff = function (this)
 				local opts = {
 					_keys = {
-						n = {
+						nx = {
 							dd = { this.toggle, desc = 'Toggle diff' },
 							['do'] = { this.toggle_overlay, desc = 'Toggle diff overlay' },
 						},
@@ -236,7 +236,7 @@ return {
 			files = function (this)
 				local opts = {
 					_keys = {
-						n = {
+						nx = {
 							f = { this.open, desc = 'Open MiniFiles' },
 						},
 					},
@@ -277,7 +277,7 @@ return {
 			hipatterns = function (this)
 				local opts = {
 					_keys = {
-						n = {
+						nx = {
 							h = { this.toggle, desc = 'Toggle MiniHipatterns' },
 						},
 					},
@@ -322,9 +322,11 @@ return {
 			},
 			map = function (this)
 				local opts = {
-					_key = {
-						{ key = 'mm', fun = this.toggle, opt = { desc = 'Toggle mini map' } },
-						{ key = 'mf', fun = this.toggle_focus, opt = { desc = 'Focus mini map' } },
+					_keys = {
+						nx = {
+							mm = { this.toggle, desc = 'Toggle MiniMap' },
+							mf = { this.toggle_focus, desc = 'Focus MiniMap' },
+						},
 					},
 					integrations = {
 						this.gen_integration.diagnostic {
@@ -348,7 +350,7 @@ return {
 			misc = function (this)
 				local opts = {
 					_keys = {
-						n = {
+						nx = {
 							mz = { this.zoom, desc = 'Zoom the current buffer' },
 						},
 					},
@@ -399,7 +401,7 @@ return {
 			pairs = {},
 			pick = {
 				_keys = {
-					n = {
+					nx = {
 						p = { ':Pick ', desc = 'Short-cut of `:Pick`' },
 					},
 				},
