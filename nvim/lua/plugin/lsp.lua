@@ -14,11 +14,35 @@ return {
 				eslint = true,
 				haxe_language_server = true,
 				html = true,
-				jsonls = true,
+				jsonls = {
+					on_attach = function (client, bufnr)
+						Setupper:new(client, bufnr):set_common()
+					end,
+					settings = {
+						json = {
+							schemas = require('schemastore').json.schemas(),
+							validate = { enable = true },
+						},
+					},
+				},
 				lua_ls = true,
 				rust_analyzer = true,
 				tinymist = true,
 				typos_lsp = {},
+				yamlls = {
+					on_attach = function (client, bufnr)
+						Setupper:new(client, bufnr):set_common()
+					end,
+					settings = {
+						yaml = {
+							schemaStore = {
+								enable = false,
+								url = '',
+							},
+							schemas = require('schemastore').yaml.schemas(),
+						},
+					},
+				},
 			}
 			return opts
 		end,
