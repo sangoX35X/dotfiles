@@ -190,6 +190,15 @@ function C:set_omnifunc ()
 	})
 end
 
+function C:move_to_root_dir ()
+	local root_dir = self.client.root_dir
+
+	if root_dir then
+		vim.opt_local.autochdir = false
+		vim.fn.chdir(root_dir)
+	end
+end
+
 function C:set_common_option ()
 	self:set_omnifunc()
 end
@@ -198,6 +207,7 @@ function C:set_common ()
 	self:set_common_autocmd()
 	self:set_common_keymap()
 	self:set_common_option()
+	self:move_to_root_dir()
 end
 
 return C
