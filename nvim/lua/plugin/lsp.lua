@@ -57,6 +57,7 @@ return {
 					on_attach = function (client, bufnr)
 						utils.lsp.Setupper:new(client, bufnr):set_common()
 					end,
+					capabilities = require('cmp_nvim_lsp').default_capabilities(),
 				}
 
 				if type(server_config_or_name) == 'table' then
