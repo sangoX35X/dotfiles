@@ -2,6 +2,7 @@ return {
 	{ 'b0o/schemastore.nvim' },
 	{
 		'neovim/nvim-lspconfig',
+		lazy = false,
 		dependencies = {
 			'j-hui/fidget.nvim',
 		},
@@ -93,7 +94,6 @@ return {
 				end
 			end
 		end,
-		event = 'VeryLazy',
 	},
 	{
 		'scalameta/nvim-metals',
