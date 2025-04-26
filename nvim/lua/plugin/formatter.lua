@@ -22,12 +22,23 @@ return {
 		keys = {
 			{
 				mode = { 'n', 'x' },
-				'<leader>f',
+				'<leader>ff',
 				function ()
 					require 'conform'.format {
 						async = true,
 					}
 				end,
+				desc = 'format',
+			},
+			{
+				mode = { 'n', 'x' },
+				'<leader>ft',
+				function ()
+					require('conform').format {
+						formatters = { 'typos' },
+					}
+				end,
+				desc = 'fix typo (typos)',
 			},
 		},
 	},
