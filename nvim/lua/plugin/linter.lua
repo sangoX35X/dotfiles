@@ -2,9 +2,7 @@ return {
 	'mfussenegger/nvim-lint',
 	event = 'VeryLazy',
 	opts = {
-		rust = {
-			'clippy',
-		},
+		markdown = { 'markdownlint-cli2' },
 	},
 	config = function (_, opts)
 		local lint = require 'lint'
