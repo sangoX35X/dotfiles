@@ -19,4 +19,13 @@ return {
 			},
 		},
 	},
+	-- markdown
+	{
+		{
+			'iamcco/markdown-preview.nvim',
+			ft = 'markdown',
+			cond = vim.fn.executable('npm') == 1,
+			build = 'cd app && npm install',
+		},
+	},
 }
