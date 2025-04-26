@@ -16,9 +16,9 @@ return {
 				vim.uv.fs_mkdir(cache, tonumber('777', 8))
 			end
 
-			local selectCanditateKeys = nil
+			local selectCandidateKeys = nil
 			if vim.g.colemak then
-				selectCanditateKeys = 'arstnei'
+				selectCandidateKeys = 'arstnei'
 			end
 
 			local dicts = {
@@ -47,7 +47,7 @@ return {
 				databasePath = cache .. '/database.json',
 				globalDictionaries = dicts,
 				registerConvertResult = true,
-				selectCanditateKeys = selectCanditateKeys,
+				selectCandidateKeys = selectCandidateKeys,
 				sources = {
 					'skk_dictionary',
 					'google_japanese_input',
