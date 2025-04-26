@@ -15,7 +15,7 @@ return {
 					open = imap_prefix .. 'p',
 				},
 				layout = {
-					position = 'vertical',
+					position = 'right',
 				},
 			},
 			suggestion = {
