@@ -1,7 +1,5 @@
 local set_keymap = require 'utils.keymap'.set_by_table
 
-local copilot_suggestion = require 'copilot.suggestion'
-
 vim.keymap.set('!', '<C-l>', '<Esc>')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n>')
 

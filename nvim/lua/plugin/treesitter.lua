@@ -72,7 +72,6 @@ return {
 	},
 	{
 		'Wansmer/treesj',
-		enable = true,
 		keys = {
 			{
 				'gS',
