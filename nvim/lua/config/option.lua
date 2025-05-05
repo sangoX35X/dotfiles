@@ -39,6 +39,8 @@ vim.opt.showmatch = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = true
 
+vim.opt.undofile = true
+
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.mousescroll = 'ver:1,hor:1'
 vim.opt.virtualedit = 'block'
