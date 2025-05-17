@@ -5,7 +5,10 @@ return {
 			formatters_by_ft = {
 				lua = { 'stylua' },
 				markdown = { 'markdownlint-cli2' },
+				nix = { 'nixfmt', 'alejandra' },
 				rust = { 'rustfmt' },
+				sql = { lsp_format = 'never' },
+				typst = { 'typstyle' },
 			},
 			format_on_save = {},
 			default_format_opts = {
