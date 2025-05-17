@@ -1,33 +1,11 @@
 return {
 	{
-		'rebelot/kanagawa.nvim',
+		'Shatur/neovim-ayu',
 		lazy = false,
-		config = function ()
-			require 'kanagawa'.setup {
-				compile = true,
-				undercurl = true,
-				commentStyle = {
-					italic = true,
-					bold = false,
-				},
-				functionStyle = {
-					italic = true,
-					bold = false,
-				},
-				keywordStyle = {
-					italic = true,
-					bold = false,
-				},
-				statementStyle = {
-					italic = false,
-					bold = true,
-				},
-				typeStyle = {
-					italic = false,
-					bold = true,
-				},
-			}
-			vim.cmd.colorscheme 'kanagawa'
+		opts = nil,
+		config = function (_, opts)
+			require('ayu').setup(opts)
+			vim.cmd.colorscheme('ayu')
 		end,
 	},
 }
