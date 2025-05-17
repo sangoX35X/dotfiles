@@ -43,20 +43,44 @@ return {
 		},
 	},
 	{
-		'matsui54/denops-signature_help',
-		event = 'VeryLazy',
+		'rachartier/tiny-inline-diagnostic.nvim',
+		event = 'LspAttach',
 		opts = {
-			border = 'rounded',
-			contentsStyle = 'labels',
-			onTriggerChar = true,
+			signs = {
+				left = '',
+				right = '',
+				diag = '',
+				arrow = '     ',
+				vertical = ' │',
+				vertical_end = ' ╰',
+			},
+			options = {
+				show_source = {
+					enabled = true,
+					if_many = true,
+				},
+				set_arrow_to_diag_color = true,
+				multilines = {
+					enabled = true,
+					always_show = true,
+				},
+				show_all_diags_on_cursorline = true,
+				over_flow = {
+					padding = 1,
+				},
+				break_line = {
+					-- enabled = true,
+				},
+				---@param diagnostic vim.Diagnostic
+				---@return string
+				format = function (diagnostic)
+					return ('%s [%s: %s]'):format(diagnostic.message, diagnostic.source, diagnostic.code)
+				end,
+			},
 		},
 		config = function (_, opts)
-			-- set options
-			vim.g.signature_help_config = opts
-			-- set highlights
-			vim.api.nvim_set_hl(0, 'SignatureHelpBorder', { link = 'FloatBorder' })
-			-- init
-			vim.fn['signature_help#enable']()
+			require('tiny-inline-diagnostic').setup(opts)
+			vim.diagnostic.config { virtual_text = false }
 		end,
 	},
 }
