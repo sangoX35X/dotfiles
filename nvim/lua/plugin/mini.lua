@@ -349,7 +349,7 @@ return {
 				local opts = {
 					_keys = {
 						nx = {
-							mz = { this.zoom, desc = 'Zoom the current buffer' },
+							z = { this.zoom, desc = 'Zoom the current buffer' },
 						},
 					},
 				}
@@ -378,7 +378,7 @@ return {
 			pick = {
 				_keys = {
 					nx = {
-						p = { ':Pick ', desc = 'Short-cut of `:Pick`' },
+						p = { ':Pick ', desc = ':Pick' },
 					},
 				},
 			},
