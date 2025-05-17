@@ -11,10 +11,7 @@ return {
 			vim.fn['denops#server#start']()
 		end,
 	},
-	{
-		'nvim-neotest/nvim-nio',
-	},
-	{
-		'nvim-lua/plenary.nvim',
-	},
+	{ 'nvim-neotest/nvim-nio' },
+	{ 'nvim-lua/plenary.nvim' },
+	{ 'MunifTanjim/nui.nvim' },
 }
