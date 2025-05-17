@@ -45,6 +45,15 @@ return {
 	{
 		'rachartier/tiny-inline-diagnostic.nvim',
 		event = 'LspAttach',
+		keys = {
+			{
+				keymap_prefix.toggle .. 'd',
+				function ()
+					require('tiny-inline-diagnostic').toggle()
+				end,
+				desc = 'Toggle inline diagnostic',
+			},
+		},
 		opts = {
 			signs = {
 				left = '',
