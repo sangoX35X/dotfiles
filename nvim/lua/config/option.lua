@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
-vim.opt.autochdir = true
+vim.opt.autochdir = false
 vim.opt.updatetime = 100
 
 vim.opt.encoding = 'utf-8'
@@ -48,3 +48,16 @@ vim.opt.virtualedit = 'block'
 vim.g.html_no_pre = 1
 vim.g.html_use_css = 1
 vim.g.use_xhtml = 1
+
+_G.keymap_prefix = {
+	buffer = '<Space>b',
+	buffer_wipeout = '<Space>B',
+	filer = '<Space>f',
+	git = '<Space>g',
+	vim_info = '<Space>i',
+	snacks_ff = '<Space>s',
+	mini = '<Space><Space>m',
+	snacks = '<Space><Space>s',
+	toggle = [[\]],
+	toggle_secondary = [[\\]],
+}

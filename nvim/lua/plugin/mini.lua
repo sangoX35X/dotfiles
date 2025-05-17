@@ -132,6 +132,7 @@ return {
 						win_borders = 'bold',
 					},
 					mappings = {
+						option_toggle_prefix = '',
 						windows = true,
 						move_with_alt = true,
 					},
@@ -371,33 +372,11 @@ return {
 				end
 				return opts
 			end,
-			notify = function (_)
-				local opts = {
-					lsp_progress = {
-						enable = false,
-					},
-					window = {
-						config = {
-							border = 'rounded',
-						},
-					},
-					_after = function (this)
-						vim.notify_original = vim.notify
-						---@param msg string
-						---@param level? number
-						---@param opts? table
-						vim.notify = function (msg, level, opts)
-							if msg:match(('[^\n]*\n'):rep(3)) then
-								return vim.notify_original(msg, level, opts)
-							else
-								return this.make_notify()(msg, level, opts)
-							end
-						end
-					end,
-				}
-				return opts
-			end,
-			operators = {},
+			operators = {
+				exchange = {
+					prefix = '',
+				},
+			},
 			pairs = {},
 			pick = {
 				_keys = {
@@ -407,12 +386,19 @@ return {
 				},
 			},
 			sessions = {},
-			snippets = {},
+			snippets = {
+				mappings = {
+					expand = '',
+					jump_next = '<C-f>',
+					jump_prev = '<C-b>',
+					stop = '<C-l>',
+				},
+			},
 			splitjoin = {
 				mappings = {
-					toggle = keymap_prefix .. 'st',
-					split = keymap_prefix .. 'ss',
-					join = keymap_prefix .. 'sj',
+					toggle = keymap_prefix.mini .. 'st',
+					split = keymap_prefix.mini .. 'ss',
+					join = keymap_prefix.mini .. 'sj',
 				},
 				detect = {
 					separator = '[,;]',
@@ -455,7 +441,7 @@ return {
 				for key, value in pairs(option) do
 					if key == '_keys' then
 						set_keymap({
-							prefix = keymap_prefix,
+							prefix = keymap_prefix.mini,
 						}, value)
 					elseif string.sub(key, 1, 1) == '_' then
 					-- do nothing
@@ -488,7 +474,6 @@ return {
 				'misc',
 				'icons',
 				'sessions',
-				'starter',
 			})
 
 			-- lazy loading
@@ -501,7 +486,6 @@ return {
 					load_plugins(opts, {
 						'ai',
 						'align',
-						'animate',
 						'basics',
 						'bracketed',
 						'bufremove',
@@ -526,7 +510,6 @@ return {
 						'surround',
 						'tabline',
 						'trailspace',
-						'notify',
 					})
 				end,
 			})
