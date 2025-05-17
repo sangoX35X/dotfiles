@@ -23,20 +23,25 @@ return {
 
 			local dicts = {
 				'L',
+				'emoji',
 			}
 			for i = #dicts, 1, -1 do
 				local prefix = 'SKK-JISYO'
+				local paths = {
+					'/usr/share/skk/',
+					'/usr/share/skk/utf8/',
+					'~/.skk/',
+				}
 				local share_path = '/usr/share/skk/'
 				local user_path = '~/.skk/'
 
 				local dict = prefix .. '.' .. dicts[i]
 
-				if vim.uv.fs_stat(share_path .. dict) then
-					dict = share_path .. dict
-				elseif vim.uv.fs_stat(user_path .. dict) then
-					dict = user_path .. dict
-				else
-					table.remove(dicts, i)
+				for _, path in ipairs(paths) do
+					if vim.uv.fs_stat(path .. dict) then
+						dict = path .. dict
+						break
+					end
 				end
 
 				dicts[i] = dict
