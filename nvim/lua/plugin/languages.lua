@@ -28,4 +28,12 @@ return {
 			build = 'cd app && npm install',
 		},
 	},
+	-- sql
+	{
+		'Xemptuous/sqlua.nvim',
+		cmd = { 'SQLua', 'SQLuaEdit' },
+		config = function (_, opts)
+			require('sqlua').setup(opts)
+		end,
+	},
 }
