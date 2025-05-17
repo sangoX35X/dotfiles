@@ -1,4 +1,3 @@
-local nmap_prefix = '<leader>c'
 local imap_prefix = '<C-c>'
 
 return {
@@ -19,6 +18,7 @@ return {
 				},
 			},
 			suggestion = {
+				auto_trigger = true,
 				keymap = {
 					accept = imap_prefix .. '<C-y>',
 					accept_word = imap_prefix .. '<C-w>',
@@ -28,15 +28,15 @@ return {
 					dismiss = imap_prefix .. '<C-e>',
 				},
 			},
+			copilot_model = 'gpt-4o-copilot',
 		},
-		config = true,
 		keys = {
 			{
-				nmap_prefix .. 'a',
+				keymap_prefix.toggle .. 'c',
 				function ()
 					require 'copilot.suggestion'.toggle_auto_trigger()
 				end,
-				desc = 'Toggle auto suggestion',
+				desc = 'Toggle copilot auto suggestion',
 			},
 		},
 	},
