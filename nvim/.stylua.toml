@@ -1,4 +1,4 @@
-syntax = 'Lua51'
+syntax = 'LuaJIT'
 quote_style = 'AutoPreferSingle'
 call_parentheses = 'Input'
 space_after_function_names = 'Definitions'

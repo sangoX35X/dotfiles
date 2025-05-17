@@ -34,6 +34,10 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 15
 vim.opt.wrap = false
 
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldlevel = 1000
+
 vim.opt.ignorecase = true
 vim.opt.showmatch = true
 vim.opt.smartcase = true
@@ -62,6 +66,7 @@ _G.keymap_prefix = {
 	mini = '<Space><Space>m',
 	snacks = '<Space><Space>s',
 	treesitter = '<Space><Space>t',
+	lsp = ',',
 	toggle = [[\]],
 	toggle_secondary = [[\\]],
 }
