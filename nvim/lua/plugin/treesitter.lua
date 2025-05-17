@@ -1,5 +1,3 @@
-local keymap_prefix = '<leader>t'
-
 return {
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -35,13 +33,13 @@ return {
 					swap = {
 						enable = true,
 						swap_next = {
-							[keymap_prefix .. 'sn'] = {
+							[keymap_prefix.treesitter .. 'sn'] = {
 								query = '@parameter.inner',
 								desc = 'Swap the parameter with previous one',
 							},
 						},
 						swap_previous = {
-							[keymap_prefix .. 'sp'] = {
+							[keymap_prefix.treesitter .. 'sp'] = {
 								query = '@parameter.inner',
 								desc = 'Swap the parameter with next one',
 							},
@@ -56,11 +54,11 @@ return {
 							border = 'rounded',
 						},
 						peek_definition_code = {
-							[keymap_prefix .. 'df'] = {
+							[keymap_prefix.treesitter .. 'df'] = {
 								query = '@function.outer',
 								desc = 'Show the definition of function',
 							},
-							[keymap_prefix .. 'dc'] = {
+							[keymap_prefix.treesitter .. 'dc'] = {
 								query = '@class.outer',
 								desc = 'Show the definition of class',
 							},
@@ -85,21 +83,21 @@ return {
 				desc = 'Toggle arguments',
 			},
 			{
-				keymap_prefix .. 'st',
+				keymap_prefix.treesitter .. 'st',
 				function ()
 					require 'treesj'.toggle()
 				end,
 				desc = 'Toggle split/join',
 			},
 			{
-				keymap_prefix .. 'ss',
+				keymap_prefix.treesitter .. 'ss',
 				function ()
 					require 'treesj'.split()
 				end,
 				desc = 'Split',
 			},
 			{
-				keymap_prefix .. 'sj',
+				keymap_prefix.treesitter .. 'sj',
 				function ()
 					require 'treesj'.join()
 				end,

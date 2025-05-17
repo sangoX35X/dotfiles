@@ -1,6 +1,3 @@
----@type string constant
-local keymap_prefix = '<leader>m'
-
 return {
 	{ 'v1nh1shungry/mini-files-status.nvim' },
 	{

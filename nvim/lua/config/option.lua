@@ -56,8 +56,12 @@ _G.keymap_prefix = {
 	git = '<Space>g',
 	vim_info = '<Space>i',
 	snacks_ff = '<Space>s',
+	telescope = '<Space>t',
+	translate = '<Space>T',
+	format = '<Space><Space>f',
 	mini = '<Space><Space>m',
 	snacks = '<Space><Space>s',
+	treesitter = '<Space><Space>t',
 	toggle = [[\]],
 	toggle_secondary = [[\\]],
 }

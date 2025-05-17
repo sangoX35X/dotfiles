@@ -1,5 +1,3 @@
-local keymap_prefix = '<leader><leader>t'
-
 return {
 	'nvim-telescope/telescope.nvim',
 	branch = '0.1.x',
@@ -8,13 +6,13 @@ return {
 		{
 			desc = ':Telescope',
 			mode = { 'n', 'x' },
-			keymap_prefix .. '<space>',
+			keymap_prefix.telescope .. '<space>',
 			':Telescope ',
 		},
 		{
 			desc = 'Telescope current buffer fuzzy find',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'a',
+			keymap_prefix.telescope .. 'a',
 			function ()
 				require('telescope.builtin').current_buffer_fuzzy_find()
 			end,
@@ -22,7 +20,7 @@ return {
 		{
 			desc = 'Telescope buffers',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'b',
+			keymap_prefix.telescope .. 'b',
 			function ()
 				require('telescope.builtin').buffers()
 			end,
@@ -30,7 +28,7 @@ return {
 		{
 			desc = 'Telescope oldfiles',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'B',
+			keymap_prefix.telescope .. 'B',
 			function ()
 				require('telescope.builtin').oldfiles()
 			end,
@@ -38,7 +36,7 @@ return {
 		{
 			desc = 'Telescope commands',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'c',
+			keymap_prefix.telescope .. 'c',
 			function ()
 				require('telescope.builtin').commands()
 			end,
@@ -46,7 +44,7 @@ return {
 		{
 			desc = 'Telescope command history',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'C',
+			keymap_prefix.telescope .. 'C',
 			function ()
 				require('telescope.builtin').command_history()
 			end,
@@ -54,7 +52,7 @@ return {
 		{
 			desc = 'Telescope diagnostics',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'd',
+			keymap_prefix.telescope .. 'd',
 			function ()
 				require('telescope.builtin').diagnostics()
 			end,
@@ -62,7 +60,7 @@ return {
 		{
 			desc = 'Telescope find files',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'f',
+			keymap_prefix.telescope .. 'f',
 			function ()
 				require('telescope.builtin').find_files()
 			end,
@@ -70,7 +68,7 @@ return {
 		{
 			desc = 'Telescope git files',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'F',
+			keymap_prefix.telescope .. 'F',
 			function ()
 				require('telescope.builtin').git_files()
 			end,
@@ -78,7 +76,7 @@ return {
 		{
 			desc = 'Telescope grep string',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'g',
+			keymap_prefix.telescope .. 'g',
 			function ()
 				require('telescope.builtin').grep_string()
 			end,
@@ -86,7 +84,7 @@ return {
 		{
 			desc = 'Telescope live grep',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'G',
+			keymap_prefix.telescope .. 'G',
 			function ()
 				require('telescope.builtin').live_grep()
 			end,
@@ -94,7 +92,7 @@ return {
 		{
 			desc = 'Telescope help tags',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'h',
+			keymap_prefix.telescope .. 'h',
 			function ()
 				require('telescope.builtin').help_tags()
 			end,
@@ -102,7 +100,7 @@ return {
 		{
 			desc = 'Telescope jump list',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'j',
+			keymap_prefix.telescope .. 'j',
 			function ()
 				require('telescope.builtin').jumplist()
 			end,
@@ -110,7 +108,7 @@ return {
 		{
 			desc = 'Telescope keymaps',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'k',
+			keymap_prefix.telescope .. 'k',
 			function ()
 				require('telescope.builtin').keymaps()
 			end,
@@ -118,7 +116,7 @@ return {
 		{
 			desc = 'Telescope lsp references',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lr',
+			keymap_prefix.telescope .. 'lr',
 			function ()
 				require('telescope.builtin').lsp_references()
 			end,
@@ -126,7 +124,7 @@ return {
 		{
 			desc = 'Telescope lsp incoming calls',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lc',
+			keymap_prefix.telescope .. 'lc',
 			function ()
 				require('telescope.builtin').lsp_incoming_calls()
 			end,
@@ -134,7 +132,7 @@ return {
 		{
 			desc = 'Telescope lsp outgoing calls',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lC',
+			keymap_prefix.telescope .. 'lC',
 			function ()
 				require('telescope.builtin').lsp_outgoing_calls()
 			end,
@@ -142,7 +140,7 @@ return {
 		{
 			desc = 'Telescope lsp document symbols',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'ld',
+			keymap_prefix.telescope .. 'ld',
 			function ()
 				require('telescope.builtin').lsp_document_symbols()
 			end,
@@ -150,7 +148,7 @@ return {
 		{
 			desc = 'Telescope lsp workdspace symbols',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lw',
+			keymap_prefix.telescope .. 'lw',
 			function ()
 				require('telescope.builtin').lsp_workspace_symbols()
 			end,
@@ -158,7 +156,7 @@ return {
 		{
 			desc = 'Telescope lsp dynamic workdspace symbols',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lW',
+			keymap_prefix.telescope .. 'lW',
 			function ()
 				require('telescope.builtin').lsp_dynamic_workspace_symbols()
 			end,
@@ -166,7 +164,7 @@ return {
 		{
 			desc = 'Telescope lsp implementations',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'li',
+			keymap_prefix.telescope .. 'li',
 			function ()
 				require('telescope.builtin').lsp_implementations()
 			end,
@@ -174,7 +172,7 @@ return {
 		{
 			desc = 'Telescope lsp definitions',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'ld',
+			keymap_prefix.telescope .. 'ld',
 			function ()
 				require('telescope.builtin').lsp_definitions()
 			end,
@@ -182,7 +180,7 @@ return {
 		{
 			desc = 'Telescope lsp type definitions',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'lD',
+			keymap_prefix.telescope .. 'lD',
 			function ()
 				require('telescope.builtin').lsp_type_definitions()
 			end,
@@ -190,7 +188,7 @@ return {
 		{
 			desc = 'Telescope marks',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'm',
+			keymap_prefix.telescope .. 'm',
 			function ()
 				require('telescope.builtin').marks()
 			end,
@@ -198,7 +196,7 @@ return {
 		{
 			desc = 'Telescope pickers',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'p',
+			keymap_prefix.telescope .. 'p',
 			function ()
 				require('telescope.builtin').pickers()
 			end,
@@ -206,7 +204,7 @@ return {
 		{
 			desc = 'Telescope resume',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'P',
+			keymap_prefix.telescope .. 'P',
 			function ()
 				require('telescope.builtin').resume()
 			end,
@@ -214,7 +212,7 @@ return {
 		{
 			desc = 'Telescope quickfix',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'q',
+			keymap_prefix.telescope .. 'q',
 			function ()
 				require('telescope.builtin').quickfix()
 			end,
@@ -222,7 +220,7 @@ return {
 		{
 			desc = 'Telescope quickfix history',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'Q',
+			keymap_prefix.telescope .. 'Q',
 			function ()
 				require('telescope.builtin').quickfixhistory()
 			end,
@@ -230,7 +228,7 @@ return {
 		{
 			desc = 'Telescope builtin',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 't',
+			keymap_prefix.telescope .. 't',
 			function ()
 				require('telescope.builtin').builtin()
 			end,
@@ -238,7 +236,7 @@ return {
 		{
 			desc = 'Telescope treesitter',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'T',
+			keymap_prefix.telescope .. 'T',
 			function ()
 				require('telescope.builtin').treesitter()
 			end,
@@ -246,7 +244,7 @@ return {
 		{
 			desc = 'Telescope git branches',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'xb',
+			keymap_prefix.telescope .. 'xb',
 			function ()
 				require('telescope.builtin').git_branches()
 			end,
@@ -254,7 +252,7 @@ return {
 		{
 			desc = 'Telescope git commits',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'xc',
+			keymap_prefix.telescope .. 'xc',
 			function ()
 				require('telescope.builtin').git_commits()
 			end,
@@ -262,7 +260,7 @@ return {
 		{
 			desc = 'Telescope git bcommits',
 			mode = { 'n' },
-			keymap_prefix .. 'xC',
+			keymap_prefix.telescope .. 'xC',
 			function ()
 				require('telescope.builtin').git_bcommits()
 			end,
@@ -270,7 +268,7 @@ return {
 		{
 			desc = 'Telescope git bcommits (range)',
 			mode = { 'x' },
-			keymap_prefix .. 'xC',
+			keymap_prefix.telescope .. 'xC',
 			function ()
 				require('telescope.builtin').git_bcommits_range()
 			end,
@@ -278,7 +276,7 @@ return {
 		{
 			desc = 'Telescope git stash',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'xs',
+			keymap_prefix.telescope .. 'xs',
 			function ()
 				require('telescope.builtin').git_stash()
 			end,
@@ -286,7 +284,7 @@ return {
 		{
 			desc = 'Telescope git status',
 			mode = { 'n', 'x' },
-			keymap_prefix .. 'xv',
+			keymap_prefix.telescope .. 'xv',
 			function ()
 				require('telescope.builtin').git_status()
 			end,

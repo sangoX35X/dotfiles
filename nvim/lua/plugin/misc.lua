@@ -7,12 +7,15 @@ return {
 	},
 	{
 		'uga-rosa/translate.nvim',
+		cmd = {
+			'Translate',
+		},
 		keys = {
-			{ mode = { 'n', 'x' }, '<leader>Tsj', '<cmd>Translate ja -output=split<cr>' },
-			{ mode = { 'n', 'x' }, '<leader>Tfj', '<cmd>Translate ja -output=floating<cr>' },
-			{ mode = { 'n', 'x' }, '<leader>Tij', '<cmd>Translate ja -output=insert<cr>' },
-			{ mode = { 'n', 'x' }, '<leader>Trj', '<cmd>Translate ja -output=replace<cr>' },
-			{ mode = { 'n', 'x' }, '<leader>Tyj', '<cmd>Translate ja -output=register<cr>' },
+			{ mode = { 'n', 'x' }, keymap_prefix.translate .. 'sj', '<cmd>Translate ja -output=split<cr>' },
+			{ mode = { 'n', 'x' }, keymap_prefix.translate .. 'fj', '<cmd>Translate ja -output=floating<cr>' },
+			{ mode = { 'n', 'x' }, keymap_prefix.translate .. 'ij', '<cmd>Translate ja -output=insert<cr>' },
+			{ mode = { 'n', 'x' }, keymap_prefix.translate .. 'rj', '<cmd>Translate ja -output=replace<cr>' },
+			{ mode = { 'n', 'x' }, keymap_prefix.translate .. 'yj', '<cmd>Translate ja -output=register<cr>' },
 		},
 		opts = {
 			default = {},
@@ -36,11 +39,11 @@ return {
 		opts = {},
 		keys = {
 			{
-				'<leader>b',
+				desc = 'Pick breadcrumbs',
+				keymap_prefix.filer .. 'b',
 				function ()
 					require 'dropbar.api'.pick()
 				end,
-				desc = 'Pick breadcrumbs',
 			},
 		},
 	},

@@ -22,7 +22,7 @@ return {
 		keys = {
 			{
 				mode = { 'n', 'x' },
-				'<leader>ff',
+				keymap_prefix.format .. 'f',
 				function ()
 					require 'conform'.format {
 						async = true,
@@ -32,7 +32,7 @@ return {
 			},
 			{
 				mode = { 'n', 'x' },
-				'<leader>ft',
+				keymap_prefix.format .. 't',
 				function ()
 					require('conform').format {
 						formatters = { 'typos' },
