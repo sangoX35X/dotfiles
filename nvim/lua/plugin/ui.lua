@@ -35,7 +35,7 @@ return {
 	},
 	{
 		'OXY2DEV/markview.nvim',
-		lazy = false,
+		cmd = { 'Markview' },
 		opts = {
 			preview = {
 				icon_provider = 'mini',
