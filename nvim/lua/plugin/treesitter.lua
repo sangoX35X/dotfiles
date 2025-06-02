@@ -8,6 +8,9 @@ return {
 				'markdown',
 				'markdown_inline',
 			},
+			ignore_install = {
+				'org',
+			},
 			auto_install = true,
 			highlight = {
 				enable = true,
