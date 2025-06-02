@@ -702,7 +702,6 @@ M.opts.scroll = {
 		},
 	},
 	animate_repeat = {
-		delay = 50,
 		easing = 'linear',
 		duration = {
 			total = 20,
@@ -757,8 +756,10 @@ M.config = function (_, opts)
 		end,
 	})
 
-	-- scroll
-	-- Snacks.scroll.enable()
+	-- picker
+	vim.ui.select = function (...)
+		Snacks.picker.select(...)
+	end
 
 	-- toggle
 	Snacks.toggle.animate():map(keymap_prefix.toggle .. 'a')
