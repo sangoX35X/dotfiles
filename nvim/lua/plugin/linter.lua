@@ -2,7 +2,7 @@ return {
 	'mfussenegger/nvim-lint',
 	event = 'VeryLazy',
 	opts = {
-		gitcommit = { 'commitlint' },
+		gitcommit = { 'commitlint', 'gitlint' },
 		markdown = { 'markdownlint-cli2' },
 		rust = { 'clippy' },
 		sql = { 'sqlfluff' },
