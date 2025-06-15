@@ -30,14 +30,54 @@ return {
 			},
 			copilot_model = 'gpt-4o-copilot',
 		},
-		keys = {
-			{
-				keymap_prefix.toggle .. 'c',
-				function ()
-					require 'copilot.suggestion'.toggle_auto_trigger()
+		config = function (_, opts)
+			local super = function ()
+				return require('copilot.suggestion')
+			end
+
+			local enabled = opts.suggestion.auto_trigger
+			_G.GitHubCopilot = {}
+			setmetatable(GitHubCopilot, {
+				__index = function (_, key)
+					return super()[key]
 				end,
-				desc = 'Toggle copilot auto suggestion',
-			},
-		},
+			})
+
+			function GitHubCopilot.is_enabled ()
+				return enabled
+			end
+			function GitHubCopilot.toggle_auto_trigger ()
+				enabled = not enabled
+				super().toggle_auto_trigger()
+			end
+			function GitHubCopilot:enable_auto_trigger ()
+				if enabled then
+					return
+				end
+				self.toggle_auto_trigger()
+			end
+			function GitHubCopilot:disable_auto_trigger ()
+				if not enabled then
+					return
+				end
+				self.toggle_auto_trigger()
+			end
+
+			require('copilot').setup(opts)
+
+			Snacks.toggle
+				.new {
+					name = 'GitHubCopilot',
+					get = GitHubCopilot.is_enabled,
+					set = function (state)
+						if state then
+							GitHubCopilot:enable_auto_trigger()
+						else
+							GitHubCopilot:disable_auto_trigger()
+						end
+					end,
+				}
+				:map(keymap_prefix.toggle .. 'c')
+		end,
 	},
 }
